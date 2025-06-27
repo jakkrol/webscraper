@@ -1,0 +1,51 @@
+﻿<Window x:Class="webscraper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:webscraper"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabControl" Grid.Column="1">
+            <TabItem Header="TabItem">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="SearchBox" Grid.Row="0" Width="300" Height="40"></TextBox>
+                    <Button x:Name="button" Grid.Row="2" Width="150" Height="50" Margin="5,5,5,5" HorizontalAlignment="Right" Content="Szukaj" Click="button_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <ScrollViewer>
+                    <StackPanel>
+                        <ListView x:Name="myListView">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding PhotoSrc}" Height="100" Width="100" VerticalAlignment="Center"/>
+                                        <Label Name="Label1" Width="400" HorizontalAlignment="Left">
+                                            <TextBlock Text="{Binding Name}" TextWrapping="WrapWithOverflow">
+
+                                            </TextBlock>
+                                            
+                                        </Label>
+                                        <Label Content="{Binding Price}" FontSize="16px"></Label>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
